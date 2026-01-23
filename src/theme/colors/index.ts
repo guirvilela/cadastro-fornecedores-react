@@ -8,7 +8,7 @@ export const colors = {
 
   blue_light: "#E8F1FC",
   blue_hover: "#0077dd",
-  blue_medium: "#1e90ff",
+  blue_medium: "#3a7bd5",
   blue_dark: "#173E72",
 
   gray_light: "#F5F7FA",

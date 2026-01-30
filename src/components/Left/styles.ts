@@ -46,3 +46,17 @@ export const FormData = styled.div`
     `}
   }
 `;
+
+export const RowField = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+
+  & > :first-child {
+    grid-column: span 8;
+  }
+
+  & > :last-child {
+    grid-column: span 4;
+  }
+`;

@@ -9,7 +9,7 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export function InputField({ error, children, ...props }: InputFieldProps) {
   return (
-    <InputContainer>
+    <InputContainer error={error}>
       <label>{children}</label>
 
       <InputContent>

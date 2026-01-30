@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 
-export const InputContainer = styled.div`
+interface InputContainerProps {
+  error?: string;
+}
+
+export const InputContainer = styled.div<InputContainerProps>`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -14,10 +18,13 @@ export const InputContainer = styled.div`
 
   input {
     padding: 12px 16px;
-    border: 1px solid ${({ theme }) => theme.colors.stroke_default};
+    border: 2px solid ${({ theme }) => theme.colors.stroke_default};
     border-radius: 8px;
     outline: none;
     font: ${({ theme }) => theme.fonts.poppins.regular_400};
+
+    border: ${({ theme, error }) =>
+      error ? `2px solid ${theme.colors.semantic_error}` : ""};
 
     &:focus {
       outline: 4px solid ${({ theme }) => theme.colors.blue_light};

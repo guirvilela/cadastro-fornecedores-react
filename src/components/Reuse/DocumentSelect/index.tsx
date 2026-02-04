@@ -1,43 +1,75 @@
 import React from "react";
-import { ButtonsContainer, Container } from "./styles";
+import { Button } from "../Button";
+import {
+  ButtonsContainer,
+  Container,
+  NonSelectedFile,
+  SelectedFile,
+} from "./styles";
 
 export function DocumentSelect() {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
+  const [isActive, setIsActive] = React.useState<boolean>(true);
 
-  const handleSelectFile = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleSelectFile = React.useCallback(() => {
     inputRef.current?.click();
-  };
+  }, []);
 
-  const handleFileChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const file = event.target.files?.[0] || null;
+  const handleFileChanged = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault();
+      const file = event.target.files?.[0] || null;
 
-    setSelectedFile(file);
-  };
+      setSelectedFile(file);
+    },
+    [],
+  );
 
-  const handleDeleteFile = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setSelectedFile(null);
+  const handleDeleteFile = React.useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      setSelectedFile(null);
+    },
+    [],
+  );
+
+  const handleButtonActive = () => {
+    if (isActive) {
+      setSelectedFile(null);
+      setIsActive(false);
+    } else {
+      setIsActive(true);
+    }
   };
 
   return (
     <Container>
       <ButtonsContainer>
-        <button onClick={(event) => handleSelectFile(event)}>
-          Selecionar arquivo
-        </button>
-        <button>Desativar</button>
+        <Button color="blue" onClick={handleSelectFile} disabled={!isActive}>
+          Selecionar Arquivo
+        </Button>
 
-        {selectedFile && <button onClick={handleDeleteFile}>Remover</button>}
+        {selectedFile && (
+          <Button color="delete" onClick={handleDeleteFile}>
+            Remover
+          </Button>
+        )}
+        <Button color="gray" onClick={handleButtonActive}>
+          {isActive ? "Desativar" : "Ativar"}
+        </Button>
       </ButtonsContainer>
 
+      <br />
+
       {selectedFile ? (
-        <p>{selectedFile.name}</p>
+        <SelectedFile>
+          <span>✓</span>
+          <p>{selectedFile.name}</p>
+        </SelectedFile>
       ) : (
-        <p>Nenhum arquivo selecionado</p>
+        <NonSelectedFile>Nenhum arquivo selecionado</NonSelectedFile>
       )}
 
       <input

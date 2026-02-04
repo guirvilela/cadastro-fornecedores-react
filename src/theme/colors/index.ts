@@ -12,6 +12,7 @@ export const colors = {
   blue_dark: "#173E72",
 
   gray_light: "#F5F7FA",
+  gray_medium: "#CCC8C1",
   gray_border: "#DCE1E7",
   gray_button: "#848689",
   gray_hover: "#5a6268",
@@ -25,5 +26,6 @@ export const colors = {
   stroke_default: "#D6D3D1",
   stroke_highlight: "#F3541C",
 
+  star_background: "#FFDB1A",
   semantic_error: "#DC2626",
 };

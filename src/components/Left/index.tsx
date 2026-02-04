@@ -1,8 +1,6 @@
-import React from "react";
 import { Card } from "../Reuse/Card";
 import { DocumentSelect } from "../Reuse/DocumentSelect";
 import { InputField } from "../Reuse/Input";
-import { Stars } from "../Reuse/Stars";
 import {
   Form,
   FormData,
@@ -13,8 +11,6 @@ import {
 } from "./styles";
 
 export function Left() {
-  const [starValue, setStarValue] = React.useState(1);
-
   return (
     <LeftContainer>
       <Providers>
@@ -29,8 +25,8 @@ export function Left() {
 
             <InputField
               type="text"
-              placeholder="Digite o nome da empresa"
-              // error={"Nome da empresa é obrigatória"}
+              placeholder="teste22"
+              error={"Nome da empresa é obrigatória"}
             >
               Nome da empresa
             </InputField>
@@ -82,31 +78,6 @@ export function Left() {
 
             <Card label="Contrato Social:">
               <DocumentSelect />
-            </Card>
-
-            <Card label="CNPJ:">
-              <DocumentSelect />
-            </Card>
-
-            <Card label="Alvará Sanitário:">
-              <DocumentSelect />
-
-              <InputField type="date" placeholder="Selecione a data">
-                Validade do Alvará Sanitário:
-              </InputField>
-            </Card>
-
-            <Card label="Autorização de funcionamento:">
-              <DocumentSelect />
-            </Card>
-
-            <Card label="Avaliação do Fornecedor">
-              <Stars
-                value={starValue}
-                onSendValue={(star) => setStarValue(star)}
-              />
-
-              <p>Nota: {starValue}</p>
             </Card>
           </FormData>
         </Form>

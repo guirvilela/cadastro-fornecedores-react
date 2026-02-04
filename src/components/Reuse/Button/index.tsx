@@ -1,6 +1,5 @@
 import type { ButtonHTMLAttributes } from "react";
-import React from "react";
-import { ButtonContainer } from "./style";
+import { ButtonContainer } from "./styles";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color: "blue" | "gray" | "delete";
@@ -10,8 +9,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function Button({
   color,
-  size = "default",
   variant = "default",
+  size = "default",
   onClick,
   ...props
 }: ButtonProps) {
@@ -23,14 +22,12 @@ export function Button({
   };
 
   return (
-    <>
-      <ButtonContainer
-        color={color}
-        size={size}
-        variant={variant}
-        onClick={handleClick}
-        {...props}
-      ></ButtonContainer>
-    </>
+    <ButtonContainer
+      color={color}
+      variant={variant}
+      size={size}
+      onClick={handleClick}
+      {...props}
+    ></ButtonContainer>
   );
 }

@@ -60,3 +60,9 @@ export const RowField = styled.div`
     grid-column: span 4;
   }
 `;
+
+export const SubmitButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+`;
